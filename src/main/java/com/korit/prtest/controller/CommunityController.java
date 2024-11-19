@@ -72,4 +72,15 @@ public class CommunityController {
         HttpStatus status = response.isResult() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
         return ResponseEntity.status(status).body(response);
     }
+
+    @GetMapping(COMMUNITY_ET_EDITABLE_BY_ID)
+    public ResponseEntity<ResponseDto<CommunityResponseDto>> getEditableCommunity(
+            @AuthenticationPrincipal String userId,
+            @PathVariable Long id
+    ) {
+        Long authorId = Long.parseLong(userId);
+        ResponseDto<CommunityResponseDto> response = communityService.getEditableCommunity(authorId, id);
+        HttpStatus status = response.isResult() ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+        return ResponseEntity.status(status).body(response);
+    }
 }

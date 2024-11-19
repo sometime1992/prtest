@@ -1,10 +1,11 @@
-CREATE DATABASE `RRSPJTEST`;
+CREATE DATABASE `rrs_db`;
+drop database `rrs_db`;
 drop table `USERS`;
 drop table `COMMUNITIES`;
 drop table `COMMUNITY_ATTACHMENTS`;
 drop table `COMMUNITY_COMMENTS`;
 
-USE `RRSPJTEST`;
+USE `rrs_db`;
 
 CREATE TABLE `USERS` (
 	`ID` bigint unsigned PRIMARY KEY AUTO_INCREMENT COMMENT '유저ID 기본키',

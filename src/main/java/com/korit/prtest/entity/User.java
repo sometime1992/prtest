@@ -46,10 +46,10 @@ public class User {
     @Column(name = "USER_PROFILE_IMAGE_URL")
     private String userProfileImageUrl;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "user")
     private List<Community> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "user")
     private List<CommunityComments> comments = new ArrayList<>();
 
 }

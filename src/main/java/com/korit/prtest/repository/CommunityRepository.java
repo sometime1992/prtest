@@ -13,8 +13,8 @@ import java.util.Optional;
 public interface CommunityRepository extends JpaRepository<Community, Long> {
 
     // 특정 커뮤니티 ID와 작성자 ID로 커뮤니티 조회
-    @Query("SELECT c FROM Community c WHERE c.communityId = :communityId AND c.author.id = :authorId")
-    Optional<Community> findByCommunityIdAndAuthorId(@Param("communityId") Long communityId, @Param("authorId") Long authorId);
+    @Query("SELECT c FROM Community c WHERE c.communityId = :communityId AND c.user.id = :userId")
+    Optional<Community> findByCommunityIdAndAuthorId(@Param("communityId") Long communityId, @Param("userId") Long userId);
 
     // 제목을 기준으로 검색 (부분 일치)
     List<Community> findByCommunityTitleContaining(String keyword);

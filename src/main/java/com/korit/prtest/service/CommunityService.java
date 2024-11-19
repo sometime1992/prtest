@@ -10,7 +10,7 @@ public interface CommunityService {
     ResponseDto<CommunityResponseDto> createCommunity(Long authorId, CommunityCreateRequestDto dto);
     ResponseDto<CommunityResponseDto> updateCommunity(Long authorId, Long id, CommunityCreateRequestDto dto);
     ResponseDto<Void> deleteCommunity(Long authorId, Long id);
-    ResponseDto<List<CommunityResponseDto>> getAllCommunities(); // 전체 커뮤니티 조회 메서드 추가
+    ResponseDto<List<CommunityResponseDto>> getAllCommunities();
     ResponseDto<CommunityResponseDto> getCommunity(Long id);
     ResponseDto<CommunityResponseDto> getEditableCommunity(Long authorId, Long id);
 }

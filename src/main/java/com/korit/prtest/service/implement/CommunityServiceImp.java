@@ -10,7 +10,7 @@ import com.korit.prtest.entity.CommunityAttachments;
 import com.korit.prtest.repository.CommunityAttachmentRepository;
 import com.korit.prtest.repository.CommunityRepository;
 import com.korit.prtest.service.CommunityService;
-import jakarta.transaction.Transactional;
+import jakarta.annotation.security.PermitAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -110,7 +110,6 @@ public class CommunityServiceImp implements CommunityService {
     }
 
     @Override
-    @Transactional
     public ResponseDto<Void> deleteCommunity(Long authorId, Long id) {
         try {
             Optional<Community> optionalCommunity = communityRepository.findByCommunityIdAndAuthorId(authorId, id);
@@ -132,14 +131,11 @@ public class CommunityServiceImp implements CommunityService {
         return ResponseDto.setSuccess(ResponseMessage.SUCCESS, null);
     }
 
-
     @Override
     public ResponseDto<List<CommunityResponseDto>> getAllCommunities() {
         try {
-            // 연관된 엔티티를 제외하고 Community 엔티티만 조회
             List<Community> communities = communityRepository.findAll();
 
-            // Community 엔티티를 CommunityResponseDto로 변환
             List<CommunityResponseDto> data = communities.stream()
                     .map(CommunityResponseDto::new)
                     .collect(Collectors.toList());
@@ -152,6 +148,7 @@ public class CommunityServiceImp implements CommunityService {
     }
 
     @Override
+    @PermitAll
     public ResponseDto<CommunityResponseDto> getCommunity(Long id) {
         try {
             Optional<Community> optionalCommunity = communityRepository.findByIdWithCommentsAndAttachments(id);
@@ -159,7 +156,6 @@ public class CommunityServiceImp implements CommunityService {
             if (optionalCommunity.isEmpty()) {
                 return ResponseDto.setFailed(ResponseMessage.NOT_EXIST_POST);
             }
-
             Community community = optionalCommunity.get();
             CommunityResponseDto data = new CommunityResponseDto(community);
 
@@ -170,8 +166,6 @@ public class CommunityServiceImp implements CommunityService {
         }
     }
 
-
-
     @Override
     public ResponseDto<CommunityResponseDto> getEditableCommunity(Long authorId, Long id) {
         CommunityResponseDto data = null;
@@ -181,7 +175,6 @@ public class CommunityServiceImp implements CommunityService {
             if (optionalCommunity.isEmpty()) {
                 return ResponseDto.setFailed(ResponseMessage.NOT_EXIST_OR_NOT_AUTHOR);
             }
-
             Community community = optionalCommunity.get();
             data = new CommunityResponseDto(community);
 
@@ -189,9 +182,7 @@ public class CommunityServiceImp implements CommunityService {
             e.printStackTrace();
             return ResponseDto.setFailed(ResponseMessage.DATABASE_ERROR);
         }
-
         return ResponseDto.setSuccess(ResponseMessage.SUCCESS, data);
     }
-
 
 }

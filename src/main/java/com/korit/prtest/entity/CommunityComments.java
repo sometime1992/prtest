@@ -23,8 +23,8 @@ public class CommunityComments {
     private Community community;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "AUTHOR_ID", nullable = false) // User의 id를 참조
-    private User author;
+    @JoinColumn(name = "USER_ID", nullable = false) // User의 id를 참조
+    private User user;
 
     @Column(name = "COMMUNITY_COMMENTS_PARENT_REPLY", nullable = false, length = 1)
     private char communityCommentsParentReply;
