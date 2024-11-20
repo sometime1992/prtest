@@ -1,6 +1,6 @@
 package com.korit.prtest.dto.coummunity.response;
 
-import com.korit.prtest.dto.comment.response.CommentResponseDto;
+import com.korit.prtest.dto.communityComment.response.CommunityCommentResponseDto;
 import com.korit.prtest.entity.Community;
 import com.korit.prtest.entity.CommunityAttachments;
 import com.korit.prtest.entity.User;
@@ -23,7 +23,7 @@ public class CommunityResponseDto {
     private String communityThumbnailImageUrl;
 
     private List<CommunityAttachments> attachments;
-    private List<CommentResponseDto> comments;
+    private List<CommunityCommentResponseDto> comments;
 
     public CommunityResponseDto(Community community) {
         this.userId = getUserId();

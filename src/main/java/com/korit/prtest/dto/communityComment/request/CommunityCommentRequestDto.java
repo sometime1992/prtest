@@ -1,4 +1,4 @@
-package com.korit.prtest.dto.comment.request;
+package com.korit.prtest.dto.communityComment.request;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentRequestDto {
+public class CommunityCommentRequestDto {
 
     @NotNull
     private Long communityId;

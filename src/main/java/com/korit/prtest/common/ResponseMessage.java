@@ -50,8 +50,11 @@ public class ResponseMessage {
     public static final String NOT_EXIST_POST = "Post does not exist."; // 게시글이 존재하지 않을 때 반환 메시지
 
     // 댓글 관련 메시지
+    public static final String NOT_AUTHOR = "You are not the author of this comment."; // 댓글 작성자가 아닐 때 반환 메시지
+    public static final String NOT_EXIST_USER = "User does not exist."; // 유저가 존재하지 않을 때 반환 메시지
     public static final String EXIST_COMMENT = "Comment already exists."; // 댓글이 이미 존재할 때 반환 메시지
     public static final String NOT_EXIST_COMMENT = "Comment does not exist."; // 댓글이 존재하지 않을 때 반환 메시지
+
 
     // 로그인 및 인증 관련 메시지
     public static final String EMAIL_AUTH_FAIL = "Email authentication failed."; // 이메일 인증 실패
@@ -113,6 +116,7 @@ public class ResponseMessage {
 
     // 인증 관련 메시지
     public static final String IMAGE_AUTHORIZATION_FAIL = "Image authorization failed."; // 이미지 인증 실패
+
 
 
 }

@@ -19,42 +19,46 @@ import java.util.List;
 @RequestMapping(ApiMappingPattern.TODO)
 @RequiredArgsConstructor
 public class TodoController {
-    private final TodoService todoService;
+//    private final TodoService todoService;
 //
 //    @PostMapping
 //    private ResponseEntity<ResponseDto<TodoCreateReponseDto>> createTodo (
-//            @AuthenticationPrincipal Long id,
+//            @AuthenticationPrincipal String userId,
 //            @RequestBody TodoCreateRequestDto dto
 //    ) {
-//        ResponseDto<TodoCreateReponseDto> response = todoService.createTodo(id, dto);
+//        Long authorId = Long.parseLong(userId);
+//        ResponseDto<TodoCreateReponseDto> response = todoService.createTodo(authorId, dto);
 //        HttpStatus status = response.isResult()? HttpStatus.OK : HttpStatus.NOT_FOUND;
 //        return ResponseEntity.status(status).body(response);
 //    }
 //
 //    @GetMapping
 //    private ResponseEntity<ResponseDto<List<TodoGetResponseDto>>> getAllTodo (
-//            @AuthenticationPrincipal Long id
+//            @AuthenticationPrincipal String userId
 //    ) {
-//        ResponseDto<List<TodoGetResponseDto>> response = todoService.getAllTodo(id);
+//        Long authorId = Long.parseLong(userId);
+//        ResponseDto<List<TodoGetResponseDto>> response = todoService.getAllTodo(authorId);
 //        HttpStatus status = response.isResult()? HttpStatus.OK : HttpStatus.NOT_FOUND;
 //        return ResponseEntity.status(status).body(response);
 //    }
 //
 //    @GetMapping
 //    private ResponseEntity<ResponseDto<TodoGetResponseDto>> getRecentTodo (
-//            @AuthenticationPrincipal Long id,
+//            @AuthenticationPrincipal String userId,
 //            @PathVariable Long todoId
 //    ) {
-//        ResponseDto<TodoGetResponseDto> response = todoService.getRecentTodo(id, todoId);
+//        Long authorId = Long.parseLong(userId);
+//        ResponseDto<TodoGetResponseDto> response = todoService.getRecentTodo(authorId, todoId);
 //        HttpStatus status = response.isResult()? HttpStatus.OK : HttpStatus.NOT_FOUND;
 //        return ResponseEntity.status(status).body(response);
 //    }
 //
 //    @PutMapping
 //    private ResponseEntity<ResponseDto<TodoUpdateResponseDto>> updateTodo (
-//            @AuthenticationPrincipal Long id,
+//            @AuthenticationPrincipal String userId,
 //            @RequestBody TodoCreateRequestDto dto
 //    ) {
+//        Long authorId = Long.parseLong(userId);
 //        ResponseDto<TodoUpdateResponseDto> response = todoService.updateTodo(dto);
 //        HttpStatus status = response.isResult()? HttpStatus.OK : HttpStatus.NOT_FOUND;
 //        return ResponseEntity.status(status).body(response);
@@ -62,10 +66,11 @@ public class TodoController {
 //
 //    @DeleteMapping
 //    private ResponseEntity<ResponseDto<Void>> deleteTodo (
-//            @AuthenticationPrincipal Long id,
+//            @AuthenticationPrincipal String userId,
 //            @PathVariable Long todoId
 //    ) {
-//        ResponseDto<Void> response = todoService.deleteTodo(id, todoId);
+//        Long authorId = Long.parseLong(userId);
+//        ResponseDto<Void> response = todoService.deleteTodo(authorId, todoId);
 //        HttpStatus status = response.isResult()? HttpStatus.OK : HttpStatus.NOT_FOUND;
 //        return ResponseEntity.status(status).body(response);
 //    }

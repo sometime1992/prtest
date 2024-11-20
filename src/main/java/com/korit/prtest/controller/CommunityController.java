@@ -23,6 +23,12 @@ public class CommunityController {
 
     private final CommunityService communityService;
 
+    /**
+     * 커뮤니티 게시글 생성
+     * @param userId - 작성자 ID (인증 정보에서 가져옴)
+     * @param dto - 생성 요청 데이터 (제목, 내용, 첨부파일 등)
+     * @return 생성된 커뮤니티 게시글 정보
+     */
     @PostMapping
     public ResponseEntity<ResponseDto<CommunityResponseDto>> createCommunity(
             @AuthenticationPrincipal String userId,
@@ -34,6 +40,13 @@ public class CommunityController {
         return ResponseEntity.status(status).body(response);
     }
 
+    /**
+     * 커뮤니티 게시글 수정
+     * @param userId - 작성자 ID (인증 정보에서 가져옴)
+     * @param id - 수정할 게시글 ID
+     * @param dto - 수정 요청 데이터 (제목, 내용, 첨부파일 등)
+     * @return 수정된 커뮤니티 게시글 정보
+     */
     @PutMapping(COMMUNITY_PUT)
     public ResponseEntity<ResponseDto<CommunityResponseDto>> updateCommunity(
             @AuthenticationPrincipal String userId,
@@ -46,6 +59,12 @@ public class CommunityController {
         return ResponseEntity.status(status).body(response);
     }
 
+    /**
+     * 커뮤니티 게시글 삭제
+     * @param userId - 작성자 ID (인증 정보에서 가져옴)
+     * @param id - 삭제할 게시글 ID
+     * @return 삭제 성공 여부
+     */
     @DeleteMapping(COMMUNITY_DELETE)
     public ResponseEntity<ResponseDto<Void>> deleteCommunity(
             @AuthenticationPrincipal String userId,
@@ -57,6 +76,10 @@ public class CommunityController {
         return ResponseEntity.status(status).body(response);
     }
 
+    /**
+     * 모든 커뮤니티 게시글 조회
+     * @return 모든 커뮤니티 게시글 정보 리스트
+     */
     @GetMapping
     @PermitAll
     public ResponseEntity<ResponseDto<List<CommunityResponseDto>>> getAllCommunities() {
@@ -65,6 +88,11 @@ public class CommunityController {
         return ResponseEntity.status(status).body(response);
     }
 
+    /**
+     * 특정 커뮤니티 게시글 조회
+     * @param id - 조회할 게시글 ID
+     * @return 해당 게시글 정보
+     */
     @GetMapping(COMMUNITY_GET_BY_ID)
     @PermitAll
     public ResponseEntity<ResponseDto<CommunityResponseDto>> getCommunity(@PathVariable Long id) {
@@ -73,6 +101,12 @@ public class CommunityController {
         return ResponseEntity.status(status).body(response);
     }
 
+    /**
+     * 수정 가능한 커뮤니티 게시글 조회
+     * @param userId - 작성자 ID (인증 정보에서 가져옴)
+     * @param id - 조회할 게시글 ID
+     * @return 수정 가능한 게시글 정보
+     */
     @GetMapping(COMMUNITY_ET_EDITABLE_BY_ID)
     public ResponseEntity<ResponseDto<CommunityResponseDto>> getEditableCommunity(
             @AuthenticationPrincipal String userId,
