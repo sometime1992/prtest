@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImp implements AuthService {
+public class AuthServiceImplement implements AuthService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptpasswordEncoder;
@@ -46,7 +46,7 @@ public class AuthServiceImp implements AuthService {
             return ResponseDto.setFailed(ResponseMessage.INVALID_USER_NAME);
         }
 
-        if ( userId == null || userId.isEmpty() || !userId.matches("^[a-zA-Z0-9]{5,15}$")) {
+        if (userId == null || userId.isEmpty() || !userId.matches("^[a-zA-Z0-9]{5,15}$")) {
             return ResponseDto.setFailed(ResponseMessage.INVALID_USER_ID);
         }
 
@@ -59,28 +59,27 @@ public class AuthServiceImp implements AuthService {
             return ResponseDto.setFailed(ResponseMessage.INVALID_CONFIRM_PASSWORD);
         }
 
-        if (userPassword.length() < 8 ||
-                !userPassword.matches("(?=.*\\d)(?=.*[!@#$%^&*()_\\-+=])[A-Za-z\\d!@#$%^&*()_\\-+=]{8,15}$")) {
+        if (!userPassword.matches("(?=.*\\d)(?=.*[!@#$%^&*()_\\-+=])[A-Za-z\\d!@#$%^&*()_\\-+=]{8,15}$")) {
             return ResponseDto.setFailed(ResponseMessage.INVALID_USER_PASSWORD);
         }
 
-        if ( userNickName == null || userNickName.isEmpty() || !userNickName.matches("^[a-zA-Z0-9]{2,10}$")) {
+        if (userNickName == null || userNickName.isEmpty() || !userNickName.matches("^[a-zA-Z0-9가-힣]{2,10}$")) {
             return ResponseDto.setFailed(ResponseMessage.INVALID_USER_NICKNAME);
         }
 
-        if ( userPhone == null || userPhone.isEmpty() || !userPhone.matches("^\\d{3}-\\d{3,4}-\\d{4}$")) {
+        if (userPhone == null || userPhone.isEmpty() || userPhone.matches("^[0-9]{11}$")) {
             return ResponseDto.setFailed(ResponseMessage.INVALID_USER_PHONE);
         }
 
-        if ( userAddress == null || userAddress.isEmpty()) {
+        if (userAddress == null || userAddress.isEmpty()) {
             return ResponseDto.setFailed(ResponseMessage.INVALID_USER_ADDRESS);
         }
 
-        if ( userAddressDetail == null || userAddressDetail.isEmpty()) {
+        if (userAddressDetail == null || userAddressDetail.isEmpty()) {
             return ResponseDto.setFailed(ResponseMessage.INVALID_USER_ADDRESS_DETAIL);
         }
 
-        if ( userEmail == null || userEmail.isEmpty() || !EmailValidator.getInstance().isValid(userEmail)
+        if (userEmail == null || userEmail.isEmpty() || !EmailValidator.getInstance().isValid(userEmail)
                 || !userEmail.matches("^[A-Za-z0-9][A-Za-z0-9._%+-]*@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
             return ResponseDto.setFailed((ResponseMessage.INVALID_USER_EMAIL));
         }

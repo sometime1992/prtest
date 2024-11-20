@@ -52,4 +52,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<CommunityComments> comments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Todo> todos;
+
 }

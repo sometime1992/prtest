@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CommunityServiceImp implements CommunityService {
+public class CommunityServiceImplement implements CommunityService {
 
     private final CommunityRepository communityRepository;
     private final CommunityAttachmentRepository communityAttachmentRepository;
