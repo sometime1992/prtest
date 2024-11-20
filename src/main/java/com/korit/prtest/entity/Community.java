@@ -21,7 +21,7 @@ public class Community {
     private Long communityId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID", nullable = false)
+    @JoinColumn(name = "ID", nullable = false)
     private User user;
 
     @Column(name = "COMMUNITY_TITLE", nullable = false)
